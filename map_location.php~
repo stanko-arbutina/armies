@@ -1,0 +1,18 @@
+<?php
+
+class MapLocation {
+  function __construct($map, $row,$column){
+    $this->row = $row;
+    $this->column = $column;
+    $this->map = $map;
+  }
+
+  function __toString(){
+    return ((string) '('.$this->row.', '. $this->column.')');
+  }
+
+  public static function idFor($row,$column){
+    return ($row.'_'.$column);
+  }
+}
+?>

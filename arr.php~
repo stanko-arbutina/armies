@@ -1,0 +1,49 @@
+<?php
+
+class Arr{
+  private $arr = array();
+
+  function __construct(){}
+ 
+  public function push($value){
+    array_push($this->arr, $value);
+  }
+
+  public function join($delimiter=''){
+    return implode($delimiter, $this->arr);
+  }
+  
+  public function __toString(){
+    return '['.implode(' ', $this->arr).']';
+  }
+  
+  public function length(){
+    return count($this->arr);
+  }
+
+  public function map($f){
+    $arr = new Arr();
+    $this->each(function($i, $el) use (&$arr,&$f){
+	$arr->push($f($i, $el));
+    });
+    return $arr;
+  }
+
+  public function select($f){
+    $arr = new Arr();
+    $this->each(function($i, $el) use (&$arr,&$f){
+	if ($f($i, $el)) $arr->push($el);
+    });
+    return $arr;
+  }
+
+
+  public function each($f){
+    for ($i=0; $i< count($this->arr);$i++){
+      $f($i,$this->arr[$i]);
+    }
+  }
+  
+}
+
+?>

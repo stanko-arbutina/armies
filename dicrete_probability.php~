@@ -1,0 +1,9 @@
+<?php
+
+class DiscreteProbability{
+  function __construct(){
+    $this->arr = new SortedHash();
+  }
+}
+
+?>

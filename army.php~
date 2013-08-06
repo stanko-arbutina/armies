@@ -1,0 +1,10 @@
+<?php
+
+class Army{
+  function __construct($actor, $size){
+    $this->general = $actor;
+    $this->size = $size;
+  }
+}
+
+?>

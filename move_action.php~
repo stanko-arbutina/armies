@@ -1,0 +1,16 @@
+<?php
+
+class MoveAction extends Action{
+  /*
+  function __construct($actor){
+    parent::__construct($actor);
+  }
+  */
+
+  public function isAvailable(){
+    return false;
+  }
+
+}
+
+?>

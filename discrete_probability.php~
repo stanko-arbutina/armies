@@ -1,0 +1,26 @@
+<?php
+
+class DiscreteProbability{
+  function __construct(){
+    $this->values = array();
+    $this->keys = array();
+    $this->_num = 0;
+    $this->_sum = 0;
+  }
+
+  public function push($num, $value){
+    $this->values->push($value);
+    $this->keys->push($this->_num);
+    $this->_num+=$num;
+    $this->_sum+=$num;
+  }
+
+  public function get(){
+    $num = rand(0, $this->_sum-1);
+    $i = 0;
+    while ($this->keys[$i]<$num) $i++;
+    return $this->values[$i];
+  }
+}
+
+?>

@@ -1,0 +1,6 @@
+<?php
+
+class MoveDownAction extends MoveAction{
+}
+
+?>

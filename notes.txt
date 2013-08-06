@@ -1,0 +1,67 @@
+Dva leadera na početku
+Mogu raditi jednu od 5 akcija: micati se (gore dolje lijevo desno) ili scoutati
+Svaki ima svoju mapu enemy unita. Ako se miče, samo ako je na visible distanci od drugog army unita, zna točno gdje je, inače ima confidence.
+Scoutanjem može dobiti neki info (ovisno o stvarnoj distanci), za više turnova s većim pouzdanjem.
+Želi također i minimizirati vrijeme.
+
+Kada ga pronađe, desi se battle (ovisno o strengthu vojnika).
+Random im se pridružuju vojnici, dešavaju jako bazni eventovi.
+->Battle -> kraj
+
+Dodati imena lidera, i mjesta na mapi.
+
+Svaka akcija se evaluira - vidi se koliko je pridonijela outcomeu - estimated value i stvarni.
+2.
+
+2 moguća outcomea -gubitak i pobjeda.
+Akcija se evaluira prema udaljenosti od ta dva- bilo bi dobro da kasnije postoji cijela hijerarhija
+ - ono što bi se trebalo dešavati je da kada vojska ojačava ide prema neprijatelju, inače bježi
+	- scoutanje bi trebalo davati i estimate snage druge vojske da bi to imalo smisla
+ - logirati sve te stvari, radi priče i praćenja.
+
+
+
+////////////////////// Početni brainstorm
+Postoji grid (mapa)
+Ima koordinate
+Postoje regije - jug,zapad,istok,jugoistok, centralno)
+Postoje dvije fakcije.
+Postoji Armyunit, koji ima svoj affiliation prema fakciji ili lideru. Samo kralj ne može promijeniti afilaciju prema fakciji.
+Armyunit ima lidera
+Armyunit ima strength (na početku broj ljudi)
+Postoje potezi koje on može odigrati (pomaknuti se ili napasti).
+Kada se napada, dešava se battle (na početku je to omjer strenghtova + undetermined_factor).
+Nakon battlea, jedne vojske više nema.
+
+Svaki turn, army leader odlučuje što će napraviti - minimax nekakve njegove value funkcije - koja ne zna za random faktore
+
+(lijepi) tekst ispis statusa, crtanje mape..
+*********************
+
+Nove akcije - predaja bitke, bježanje, ostanak u bitci, battle samo radi oštećenja na ljudstvu
+
+Više vrsta unita sa raznim rangevima - "bitka" može biti na raznim rangevima
+Više vrsta terena koji na razne načine utjeću na bitku.
+______________________________________________________
+
+Postoje sela, koja imaju affiliation.
+Kada je vojska neki broj turnova u selu, dobiva nove unite.
+
+Splitanje i mergeanje unita; postoji poseban leader jednog unita, u kojem je kralj - gubitak kralja je gubitak bitke.
+- kralj je jednostavno poseban leader koji ne može promjeniti affiliation prema strani
+	- inače bi se moglo desiti da se svi jednostavno pomire i naprave svoju državu, pa ne postoji kriterij zaustavljanja igre
+____________________________
+
+Brojimo win streakove za army unit, koji utjeću na moral.
+
+Postoje army eventovi - ako je moral mali, može se dio army unita sam odcijepiti.
+
+World eventovi (tipa potres).
+
+Zalihe, fighting spirit, reputacija.
+
+*****
+što ako nitko ne pobijdei nakon 100 turnova npr. ? moguća kombinacija parametara u kojoj se rat niti ne dešava - dobro teoretski, ali se response nikada ne generira.
+Turnovi su npr. dani. (možda i noć, pa uvesti odmor - to je environment event).
+Army može imati više leadera(prvi je pravi).
+_____________________________________

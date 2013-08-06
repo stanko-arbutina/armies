@@ -1,0 +1,10 @@
+<?php
+class Str{
+  function __construct($s){
+    $this->string = $s;
+  }
+
+
+}
+
+?>

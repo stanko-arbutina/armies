@@ -1,0 +1,54 @@
+<?php
+
+class Actor {
+
+  public function identStr(){
+    return $this->affiliation;
+  }
+
+  public function play(){
+    if (!$this->reachedBattlePoint()){
+      $this->actions->getAvailable();
+      $this->actions->playBest();
+      if ($this->reachedBattlePoint()) $this->setStatus('Došao/la je do odredišta');
+    } else {
+      //ovo naravno ide u akcije, ali zaokružiti iteraciju
+      $this->army->fortify();
+      $this->army->rest();
+      $this->setStatus('Vojska gradi utvrdu (Utvrđenost: '.$this->army->fortification.')');
+      
+    }
+  }
+
+  public function reachedBattlePoint(){
+    if ((!$this->_reached_battle_point) && ($this->location == $this->goal)){
+      $this->_reached_battle_point = true;
+    }
+    return $this->_reached_battle_point;
+  }
+
+  function __construct($affiliation, $location, $army_size, $goal){
+    $this->_reached_battle_point = false;
+    $this->affiliation = $affiliation;
+    $this->location = $location;
+    $this->army = new Army($this, $army_size);
+    $this->goal = $goal;
+    $this->actions = new ActionList($this);
+    $this->setStatus('Vojska: '.$this->affiliation.'('.$this->army->size.' vojnika), Lokacija: '.$this->location.', Cilj: '.$this->goal);
+  }
+
+  public function status(){
+    return $this->status_str;
+  }
+
+  public function setLocation($new_location){
+    $this->location = $new_location;
+    $this->setStatus('Pomaknuo/la se na '.$new_location->__toString());
+  }
+
+  private function setStatus($str){
+    $this->status_str = $str;
+  }
+}
+
+?>

@@ -1,0 +1,53 @@
+<?php
+
+class SortedHash{
+  private $keys;
+  private $assoc = array();
+
+  function __construct(){
+    $this->keys = new Arr();
+  }
+  public function add($key, $value){    
+    $this->assoc[$key] = $value;
+    $this->keys->push($key);
+  }
+
+  public function shuffle(){
+    $this->keys->shuffle();
+  }
+
+  public function getNext(){
+    $key = $this->keys->getNext();
+    return $this->assoc[$key];
+  }
+
+  public function each($f){
+    $ass = $this->assoc;
+    $this->keys->each(function($i, $el) use (&$ass, &$f){
+	$f($el, $ass[$el]);
+    });
+  }
+
+  public function get($key){
+    return $this->assoc[$key];
+  }
+
+  public function map($f){
+    $rez = new Arr();
+    $this->each(function($key, $value) use (&$rez, &$f){
+	$rez->push($f($key, $value));
+    });
+    return $rez;
+  }
+
+  public function __toString(){
+    $arr=$this->map(function($key, $value){
+	return ($key.' -> '.$value);
+    });
+    return ('{'.$arr->join(", ").'}');
+  }
+
+
+}
+
+?>

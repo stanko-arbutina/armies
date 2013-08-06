@@ -1,0 +1,11 @@
+<?php
+
+class WorldEventGenerator{
+
+  public static function generate($army){
+    
+  }
+
+}
+
+?>

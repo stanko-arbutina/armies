@@ -1,0 +1,11 @@
+<?php
+
+class MoveUpAction extends MoveAction{
+
+  public function isAvailable(){
+    return true;
+  }
+
+}
+
+?>
