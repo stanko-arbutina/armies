@@ -1,0 +1,1 @@
+Text based simulation of two armies marching towards each other and fighting a battle on a square grid. I liked this one because of the story-generating aspect - I found it quite interesting as coding challenges go. Was praised for OO practices and creativity, but botched the interview due to nervousness. 
